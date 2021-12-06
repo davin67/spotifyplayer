@@ -1,0 +1,4 @@
+title: Android
+caseStyle: camelCase
+supportLevel: production
+fallbackPlatform: java
