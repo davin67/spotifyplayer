@@ -1,0 +1,15 @@
+- name: Python
+  link: _documentation/clients/python/index.md
+  platformicon: python
+- name: JavaScript
+  link: _documentation/clients/javascript/index.md
+  platformicon: javascript
+- name: Node.js
+  link: _documentation/clients/node/index.md
+  platformicon: nodejs
+- name: Perl
+  link: _documentation/clients/perl/index.md
+  platformicon: perl
+- name: C#
+  link: _documentation/clients/csharp/index.md
+  platformicon: csharp
