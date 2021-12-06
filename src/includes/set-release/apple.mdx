@@ -1,0 +1,17 @@
+```swift
+import Sentry
+
+SentrySDK.start { options in
+    options.releaseName = "1.0.0"
+}
+```
+
+```objc
+@import Sentry;
+
+[SentrySDK startWithConfigureOptions:^(SentryOptions *options) {
+    options.releaseName = @"1.0.0;"
+}
+```
+
+If no release name is set the SDK creates a default combined of `CFBundleIdentifier, CFBundleShortVersionString and CFBundleVersion`.
