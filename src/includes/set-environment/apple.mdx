@@ -1,0 +1,17 @@
+```swift
+import Sentry
+
+SentrySDK.start { options in
+    options.dsn = "___PUBLIC_DSN___"
+    options.environment = "production"
+}
+```
+
+```objc
+@import Sentry;
+
+[SentrySDK startWithConfigureOptions:^(SentryOptions *options) {
+    options.dsn = @"___PUBLIC_DSN___";
+    options.environment = @"production";
+}];
+```
