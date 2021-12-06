@@ -1,0 +1,21 @@
+To install the Android SDK, add it your `build.gradle` file:
+
+```groovy {filename:build.gradle}
+// Make sure mavenCentral is there.
+repositories {
+    mavenCentral()
+}
+
+// Enable Java 1.8 source compatibility if you haven't yet.
+android {
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+}
+
+// Add Sentry's SDK as a dependency.
+dependencies {
+    implementation 'io.sentry:sentry-android:{{ packages.version('sentry.java', '4.2.0') }}'
+}
+```
