@@ -1,0 +1,23 @@
+```groovy {filename:build.gradle}
+// Make sure mavenCentral is there.
+repositories {
+    mavenCentral()
+}
+
+// Add Sentry's SDK as a dependency.
+dependencies {
+    implementation 'io.sentry:sentry:{{ packages.version('sentry.java', '4.0.0') }}'
+}
+```
+
+```xml {tabTitle:Maven}{filename:pom.xml}
+<dependency>
+    <groupId>io.sentry</groupId>
+    <artifactId>sentry</artifactId>
+    <version>{{ packages.version('sentry.java', '4.0.0') }}</version>
+</dependency>
+```
+
+```scala {tabTitle:SBT}
+libraryDependencies += "io.sentry" % "sentry" % "{{ packages.version('sentry.java', '4.0.0') }}"
+```
