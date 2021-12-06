@@ -1,0 +1,30 @@
+{%- assign __collection = site.document_tree
+  | where: 'slug': '_documentation'
+  | first
+-%}
+{%- assign __tree = __collection.items -%}
+
+{% include sidebar/tree.html
+  data=__tree
+  templates="category,default"
+  categories=site.data.documentation_categories
+  is_category=true
+%}
+
+{%- if jekyll.environment == 'development' -%}
+<hr class="mb-3 mb-md-4">
+
+{%- assign __collection = site.document_tree
+  | where: 'slug': '_dev_components'
+  | first
+-%}
+{% assign __tree = __collection.items %}
+
+{% assign __paths = site.dev_components | map: "path" %}
+{% include sidebar/tree.html
+  data=__tree
+  templates="dev_category,default"
+  categories=site.data.dev_components_categories
+  is_category=true
+%}
+{%- endif -%}
