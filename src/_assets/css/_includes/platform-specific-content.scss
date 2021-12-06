@@ -1,0 +1,59 @@
+.platform-specific-content .dropdown-menu {
+  display: none;
+
+  &.show {
+    display: grid;
+  }
+}
+
+.platform-dropdown-list {
+  display: grid;
+  grid-template-columns: max-content max-content;
+}
+
+.platform-specific-content .unsupported-platforms {
+  border-left: 1px solid rgba(22, 17, 28, 0.15);
+  margin: -0.5rem 0;
+  padding: 1rem;
+
+  h2 {
+    font-size: 1rem;
+    margin: 0;
+  }
+
+  p {
+    font-size: 0.8rem;
+    color: $gray-600;
+  }
+
+  a {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    grid-gap: 4px;
+    align-items: center;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    padding: 1px 5px;
+    border-radius: 3px;
+    color: $gray-600;
+
+    &:hover {
+      text-decoration: none;
+      background: $gray-100;
+      color: $gray-800;
+    }
+  }
+
+  svg {
+    height: 12px;
+    width: 12px;
+  }
+
+  .platform-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 150px);
+    grid-gap: 1px 6px;
+    font-size: 0.8rem;
+  }
+}
