@@ -1,0 +1,15 @@
+To install the Android SDK, add it your `build.gradle` file:
+
+```groovy {filename:build.gradle}
+// Make sure jcenter or mavenCentral is there.
+repositories {
+    jcenter()
+    // Or
+    mavenCentral()
+}
+
+// Add Sentry's SDK as a dependency.
+dependencies {
+    implementation 'io.sentry:sentry:3.1.0'
+}
+```
