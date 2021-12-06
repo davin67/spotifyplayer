@@ -1,0 +1,11 @@
+```javascript
+myUndefinedFunction();
+```
+
+Or, by manually generating an event:
+
+```javascript
+import * as Sentry from "@next/plugin-sentry";
+
+Sentry.captureMessage("This is a test event!");
+```
