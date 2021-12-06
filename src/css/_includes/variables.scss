@@ -1,0 +1,82 @@
+/*
+
+  Base color ranges
+
+  Do not reference these directly in css rules. Create new, human-friendly
+  variables that reference them.
+
+*/
+
+// A range of warm tones.
+
+$flame0:                        #DF5128; // ^ Red-orange
+$flame1:                        #E55E32; // |
+$flame2:                        #EA6B3C; // |
+$flame3:                        #EF7846; // |
+$flame4:                        #F4834F; // |
+$flame5:                        #F79A4F; // |
+$flame6:                        #FAAF4E; // | Orange
+$flame7:                        #EDCF9E; // | Desat Orange
+$flame8:                        #FFEFAE; // v Desat Yellow
+
+// A range of desaturated purples
+
+$desatPurple0:                  #0F0A1F; // ^ Dark purple
+$desatPurple1:                  #231C3D; // |
+$desatPurple2:                  #362D59; // |
+$desatPurple3:                  #473A67; // |
+$desatPurple4:                  #584774; // |
+$desatPurple5:                  #64517D; // |
+$desatPurple6:                  #79628C; // |
+$desatPurple7:                  #846E95; // |
+$desatPurple8:                  #9481A4; // |
+$desatPurple9:                  #A796B4; // |
+$desatPurple10:                 #BBADC6; // |
+$desatPurple11:                 #C3B6CE; // |
+$desatPurple12:                 #D2C7DA; // v Light purple
+$desatPurple13:                 #E2D9E9;
+$desatPurple14:                 #EFE8F4;
+$desatPurple15:                 #FAF8FF;
+
+
+// saturated purples
+$brandPink:                     #E1557C;
+$brandLink:                     $brandPink;
+$codeColor:                     #9C5F99;
+$brandDecoration:               $desatPurple4;
+
+
+
+
+// misc
+
+
+
+$jewel0:                        #69C289; // Sentry green
+$jewel1:                        #007A78; // Darkened Sentry green
+$lightBlue:                     #48A5DB; // Sentry blue
+
+/*
+  Color variables
+*/
+$white:                         #ffffff;
+$lightText:                     #9093C1;
+$highlightPurple:               $brandLink;
+$lightPurple:                   $desatPurple11;
+$lightestPurple:                $desatPurple12;
+$mediumPurple:                  $desatPurple6;
+$darkestPurple:                 $desatPurple0;
+$darkPurple:                    $desatPurple2;
+$boldRed:                       $flame0;
+$textDecorationPurple:          $brandDecoration;
+$lightestPurpleBackground:      rgba($desatPurple12, .2);
+$successGreen:                  $jewel0;
+
+$transition-time:               0.125s;
+
+$headerHeight:                  4rem;
+
+:root {
+  --light-text: #{$lightText};
+  --lightest-purple-background: #{$lightestPurpleBackground};
+}

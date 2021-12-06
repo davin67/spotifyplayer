@@ -1,0 +1,58 @@
+---
+title: actix-web
+redirect_from:
+  - /platforms/rust/actix/
+description: "Learn about using Sentry with Actix Web."
+---
+
+The `sentry-actix` crate adds a middleware for [`actix-web`](https://actix.rs/) that captures errors and report them to `Sentry`.
+
+To use this middleware, configure Sentry then add it to your actix web app as a middleware. Because actix is generally working with non sendable objects and is highly concurrent, this middleware creates a new hub per request. As a result, many of the Sentry integrations, such as breadcrumbs, do not work unless you bind the actix hub.
+
+## Example
+
+In your `Cargo.toml`:
+
+```toml {filename:Cargo.toml}
+[dependencies]
+sentry = "{{ packages.version('sentry.rust') }}"
+sentry-actix = "{{ packages.version('sentry.rust') }}"
+```
+
+And your Rust code:
+
+```rust {filename:main.rs}
+use std::io;
+
+use actix_web::{get, App, Error, HttpRequest, HttpServer};
+
+#[get("/")]
+async fn failing(_req: HttpRequest) -> Result<String, Error> {
+    Err(io::Error::new(io::ErrorKind::Other, "An error happens here").into())
+}
+
+#[actix_web::main]
+async fn main() -> io::Result<()> {
+    let _guard = sentry::init(("___PUBLIC_DSN___", sentry::ClientOptions {
+        release: sentry::release_name!(),
+        ..Default::default()
+    }));
+    std::env::set_var("RUST_BACKTRACE", "1");
+
+    HttpServer::new(|| {
+        App::new()
+            .wrap(sentry_actix::Sentry::new())
+            .service(failing)
+    })
+    .bind("127.0.0.1:3001")?
+    .run()
+    .await?;
+
+    Ok(())
+}
+```
+
+## Reusing the Hub
+
+When using the actix integration, a new per-request Hub will be created from the main Hub, and will be set automatically as the current Hub (`Hub::current()`).
+No manual intervention in needed.
