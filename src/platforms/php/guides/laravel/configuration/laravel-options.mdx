@@ -1,0 +1,51 @@
+---
+title: Laravel Options
+sidebar_order: 1
+description: "Learn about Sentry's integration with Laravel and its options for breadcrumbs, and performance."
+---
+
+All configuration for Laravel is done in `config/sentry.php`.
+
+## Breadcrumbs
+
+The Laravel integration will create [breadcrumbs](../../enriching-events/breadcrumbs/) for certain events occurring in the framework, the capture of this information can be configured using the following options:
+
+```php {filename:config/sentry.php}
+'breadcrumbs' => [
+    // Capture Laravel logs in breadcrumbs
+    'logs' => true,
+
+    // Capture SQL queries in breadcrumbs
+    'sql_queries' => true,
+
+    // Capture bindings on SQL queries logged in breadcrumbs
+    'sql_bindings' => true,
+
+    // Capture queue job information in breadcrumbs
+    'queue_info' => true,
+
+    // Capture command information in breadcrumbs
+    'command_info' => true,
+],
+```
+
+## Performance
+
+To enable performance monitoring, set this to a value greater than `0.0`:
+
+```php {filename:config/sentry.php}
+// Be sure to lower this in production to prevent quota issues
+'traces_sample_rate' => 1.0,
+```
+
+## Controller base namespace
+
+Performance monitoring and router breadcrumbs can report the controller classname that handled the request.
+
+These names are generally longer than needed, that's why we strip away the base namespace that is the same for all controller classes.
+
+In Laravel this is `App\Http\Controllers` by default but you can override this using the `controllers_base_namespace` option:
+
+```php {filename:config/sentry.php}
+'controllers_base_namespace' => env('SENTRY_CONTROLLERS_BASE_NAMESPACE', 'App\\Http\\Controllers'),
+```
