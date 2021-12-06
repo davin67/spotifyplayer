@@ -1,0 +1,56 @@
+# This file dictates sort order and display properties for top-level categories
+
+- title: Home
+  slug: home
+
+- title: Error Reporting
+  slug: error-reporting
+
+- title: Enriching Error Data
+  slug: enriching-error-data
+
+- title: Performance
+  slug: performance
+
+- title: Workflow and Integrations
+  slug: workflow
+
+- title: Data Management
+  slug: data-management
+
+- title: Organizations and Projects
+  slug: accounts
+
+- title: Platforms
+  slug: platforms
+
+- title: Security & Legal
+  slug: meta
+
+- title: Command Line Interface
+  slug: cli
+  hide_when_inactive: true
+
+- title: API Reference
+  slug: api
+  hide_when_inactive: true
+
+- title: Legacy Clients
+  slug: clients
+  hide_when_inactive: true
+
+- title: Development
+  slug: development
+  hide_when_inactive: true
+
+- title: Security
+  slug: security
+  hide_when_inactive: true
+  
+- title: Guides
+  slug: guides
+  hide_when_inactive: true
+
+- title: Support
+  slug: support
+  hide_when_inactive: true
