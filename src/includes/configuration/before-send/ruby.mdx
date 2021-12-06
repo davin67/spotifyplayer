@@ -1,0 +1,14 @@
+```ruby
+Sentry.init do |config|
+  filter = ActiveSupport::ParameterFilter.new(Rails.application.config.filter_parameters)
+  config.before_send = lambda do |event, hint|
+    request = event.request
+
+    if request
+      request.data = filter.filter(request.data)
+    end
+
+    event
+  end
+end
+```
