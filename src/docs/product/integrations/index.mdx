@@ -1,0 +1,105 @@
+---
+title: Integrations
+sidebar_order: 7
+redirect_from:
+  - /integrations/
+  - /workflow/integrations/
+  - /workflow/integrations/legacy-integrations/
+  - /workflow/integrations/global-integrations/
+  - /workflow/legacy-integrations/
+  - /workflow/global-integrations/
+---
+
+Sentry integrates with your favorite apps and services. Sentry integrations are categorized as [organization level](#organization-level), [project level](#project-level), or [integration platform](#integration-platform).
+
+## Organization Level
+
+Set these integrations up once per organization, then they're available for _all_ projects. Organization level integrations are either created by Sentry or created by partners. Integrations created using the Integration Platform are maintained by Sentry partners. We provide links to that partner content for your convenience.
+
+### Integration Platform
+
+Sentry’s [Integration Platform](/product/integrations/integration-platform/) allows external services to interact with the Sentry SaaS service using the REST API and webhooks. Integrations using this platform are first-class actors within Sentry, and you can build them for [public](/product/integrations/integration-platform/#public-integrations) as well as [internal](/product/integrations/integration-platform/#internal-integrations) use cases.
+
+These integrations are maintained and supported by the companies that created them. For more details, see the full documentation on the [Integration Platform](/product/integrations/integration-platform/).
+
+## Project Level
+
+These integrations are set up once per project and are only usable in projects in which they've been set up.
+
+
+## Integration Features
+Each integration offers features that help track and triage your errors.
+
+### Notification & Incidents
+
+| Integration | Alerts | Link Unfurling |
+| -- | -- | -- |
+| [Amixr](/product/integrations/amixr/) | X |
+| Datadog | X |
+| OpsGenie | X |
+| [PagerDuty](/product/integrations/pagerduty/) | X |
+| Pushover | X |
+| [Slack](/product/integrations/slack/) | X | X |
+| Twilio | X |
+| VictorOps | X |
+
+### Source Code Management
+
+| Integration | Commit Tracking | Suspect Commits | Resolve via Commit/PR |
+| -- | -- | -- | -- |
+| [Azure DevOps](/product/integrations/azure-devops/) | X | X | X |
+| [BitBucket](/product/integrations/bitbucket/) | X | X | X |
+| [GitHub/GitHub Enterprise](/product/integrations/github/) | X | X | X |
+| [GitLab](/product/integrations/gitlab/) | X | X | X |
+
+### Project Management
+
+| Integration | Issue Creation/Linking | Issue Sync |
+| -- | -- | -- |
+| [Asana](/product/integrations/asana/) | X |
+| [Azure DevOps (Work Items)](/product/integrations/azure-devops/) | X | X |
+| [BitBucket (Issues)](/product/integrations/bitbucket/) | X |
+| [ClickUp](/product/integrations/clickup/) | X |
+| [Clubhouse](/product/integrations/clubhouse/) | X |
+| [GitHub (Issues)](/product/integrations/github/) | X |
+| [GitLab (Issues)](/product/integrations/gitlab/) | X |
+| [Jira/Jira Server](/product/integrations/jira/) | X | X |
+| Phabricator | X |
+| Pivotal Tracker | X |
+| Redmine | X |
+| Trello | X |
+
+### Deployment
+
+| Integration | Release Management | Suspect Commits | Deploy Notifications | Upload JavaScript Source Maps |
+| -- | -- | -- | -- | -- |
+| [Bitbucket Pipelines](/product/releases/release-automation/bitbucket-pipelines/) | X | X | X | X |
+| [GitHub Actions](/product/releases/release-automation/github-actions/) | X | X | X | X |
+| Heroku | X | X | X |
+| [Netlify](/product/releases/release-automation/netlify/) | X | X | X | X |
+| [Vercel](/product/integrations/vercel/) | X | X | X | X |
+
+### Data & Visualization
+
+| Integration | Data Forwarding |
+| -- | -- |
+| [Amazon SQS](/product/integrations/amazon-sqs/) | X |
+| Segment | X |
+| [Splunk](/product/integrations/splunk/) | X |
+
+###  Session Replay
+| Integration | Link Issue to user sessions |
+| -- | -- |
+| [FullStory](https://www.npmjs.com/package/@sentry/fullstory) | X |
+| Asayer | X |
+
+
+### Debugging
+| Integration | Stacktrace Link |
+| -- | -- |
+| [Rookout](/product/integrations/rookout/) | X |
+
+### Feature Flag
+| Integration | Tie errors to feature flags |
+| -- | -- |
+| [Split](/product/integrations/split/) | X |
