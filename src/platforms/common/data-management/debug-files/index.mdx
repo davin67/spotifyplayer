@@ -1,0 +1,53 @@
+---
+title: "Debug Information Files"
+sidebar_order: 7
+redirect_from:
+  - /workflow/debug-files/
+supported:
+  - native
+  - android
+  - apple
+  - javascript.wasm
+  - rust
+description: "Learn about how debug information files allow Sentry to extract stack traces and provide more information about crash reports for most compiled platforms."
+---
+
+Debug information files allow Sentry to extract stack traces and provide more
+information about crash reports for most compiled platforms. Information stored
+in debug files includes original function names, paths to source files and line
+numbers, source code context, or the placement of variables in memory. Sentry
+displays this information on the Issue Details page to help you triage an issue.
+
+Each major platform uses different debug information files, as discussed in <PlatformLink to="/data-management/debug-files/file-formats">our Debug File Formats content</PlatformLink>. We currently support the following formats:
+
+- _dSYM files_ for iOS, iPadOS, tvOS, watchOS, and macOS
+- _ELF symbols_ for Linux and Android (NDK)
+- _PDB files_ for Windows
+- _Breakpad symbols_ for all platforms
+- _WASM files_ for WebAssembly
+- _ProGuard mappings_ for Java and Android
+
+Each of these formata .
+
+<Note>
+
+Source maps, while also being debug information files, are handled
+differently in Sentry. For more information see [Source Maps in sentry-cli](/product/cli/releases/#sentry-cli-sourcemaps).
+
+</Note>
+
+Sentry requires access to debug information files of your application as well as
+system libraries to provide fully symbolicated crash reports. You can either
+[upload](./upload/) your files to Sentry or put them on a compatible
+[Symbol Server](./symbol-servers/) to be downloaded by Sentry when needed.
+
+Debug information files can be managed on the _Debug Files_ section in _Project
+Settings_. This page lists all uploaded files and allows you to configure symbol
+servers for automatic downloads.
+
+ProGuard files can be managed on the _ProGuard_ section in _Project
+Settings_. This page lists all uploaded files.
+
+## Learn More
+
+<PageGrid />
