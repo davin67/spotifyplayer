@@ -1,0 +1,125 @@
+- name: JavaScript
+  link: _documentation/platforms/javascript/index.md
+  platformicon: javascript
+
+- name: Browser JavaScript CDN
+  link: _documentation/error-reporting/quickstart.md
+  platform: browser
+  platformicon: javascript
+
+- name: Java
+  link: _documentation/clients/java/index.md
+  platformicon: java
+
+- name: Node.js
+  link: _documentation/platforms/node/index.md
+  platform: node
+  platformicon: nodejs
+
+- name: .NET
+  link: _documentation/platforms/dotnet/index.md
+  platformicon: csharp
+
+- name: PHP
+  link: _documentation/clients/php/index.md
+  platformicon: php
+
+- name: Ruby
+  link: _documentation/clients/ruby/index.md
+  platformicon: ruby
+
+- name: Vue
+  link: _documentation/platforms/javascript/vue.md
+  platformicon: vue
+
+- name: Angular
+  link: _documentation/platforms/javascript/angular.md
+  platformicon: angularjs
+
+- name: Ember
+  link: _documentation/platforms/javascript/ember.md
+  platformicon: ember
+
+- name: React
+  link: _documentation/platforms/javascript/react.md
+  platformicon: react
+
+- name: React Native
+  link: _documentation/clients/react-native/index.md
+  platformicon: react
+
+- name: Cordova
+  link: _documentation/platforms/javascript/cordova.md
+  platformicon: cordova
+
+- name: Electron
+  link: _documentation/platforms/javascript/electron/index.md
+  platformicon: electron
+
+- name: Python
+  link: _documentation/platforms/python/index.md
+  platformicon: python
+
+- name: Django
+  link: _documentation/platforms/python/django.md
+  platformicon: django
+
+- name: Flask
+  link: _documentation/platforms/python/flask.md
+  platformicon: flask
+
+- name: Sanic
+  link: _documentation/platforms/python/sanic.md
+  platformicon: python
+
+- name: Celery
+  link: _documentation/platforms/python/celery.md
+  platformicon: python
+
+- name: AWS Lambda (Python)
+  link: _documentation/platforms/python/aws_lambda.md
+  platformicon: python
+
+- name: Pyramid
+  link: _documentation/platforms/python/pyramid.md
+  platformicon: python
+
+- name: RQ (Redis Queue)
+  link: _documentation/platforms/python/rq.md
+  platformicon: python
+
+- name: WSGI
+  link: _documentation/platforms/python/wsgi.md
+  platformicon: python
+
+- name: AIOHTTP
+  link: _documentation/platforms/python/aiohttp.md
+  platformicon: python
+
+- name: Tornado
+  link: _documentation/platforms/python/tornado.md
+  platformicon: python
+
+- name: Rust
+  link: _documentation/platforms/rust/index.md
+  platformicon: rust
+
+- name: actix-web
+  link: _documentation/platforms/rust/actix.md
+  platformicon: rust
+
+- name: Minidump
+  link: _documentation/platforms/minidump/index.md
+  platformicon: generic
+
+- name: Elixir
+  link: _documentation/clients/elixir/index.md
+  platformicon: elixir
+
+- name: Cocoa
+  link: _documentation/clients/cocoa/index.md
+  platformicon: apple
+
+- name: Go
+  link: _documentation/clients/go/index.md
+  platformicon: go

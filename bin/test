@@ -1,0 +1,8 @@
+#!/bin/bash
+# usage: bin/test
+#
+# Run tests
+
+./bin/build _config.test.yml
+
+./node_modules/.bin/jest $@
