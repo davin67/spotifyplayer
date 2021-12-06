@@ -1,0 +1,134 @@
+---
+title: Add Context
+sidebar_order: 1
+notSupported:
+  - native.breakpad
+  - native.crashpad
+  - native.minidumps
+  - native.wasm
+description: "Custom contexts allow you to attach arbitrary data (strings, lists, dictionaries) to an event."
+---
+
+Custom contexts allow you to attach arbitrary data to an event. Often, this context is shared among any issue captured in its lifecycle. You cannot search these, but they are viewable on the issue page:
+
+![Custom contexts as viewed on the Additional Data section of an event](additional_data.png)
+
+<Note>
+
+If you need to be able to search on custom data, [use tags](../tags) instead.
+
+</Note>
+
+## Structured Context
+
+The best practice to attach custom data is via structured contexts. A context must always be a dictionary or map, and its values can be arbitrary.
+
+<PlatformSection supported={["javascript", "node"]}>
+
+You'll first need to import the SDK, as usual:
+
+<PlatformContent includePath="enriching-events/import" />
+
+</PlatformSection>
+
+Then, use <PlatformIdentifier name="set-context" /> and give the context a unique name:
+
+<PlatformContent includePath="enriching-events/set-context" />
+
+There are no restrictions on context name. In the context object, all keys are allowed except for `type`, which is used internally. 
+
+Learn more about conventions for common contexts in the [contexts interface developer documentation](https://develop.sentry.dev/sdk/event-payloads/contexts/).
+
+## Size Limitations
+
+When sending context, _consider payload size limits_. Sentry does not recommend sending the entire application state and large data blobs in contexts. If you exceed the maximum payload size, Sentry will respond with HTTP error `413 Payload Too Large` and reject the event. <PlatformSection supported={["javascript", "node"]}>When `keepalive: true` is used, the request may additionally stay pending forever.</PlatformSection>
+
+The Sentry SDK will try its best to accommodate the data you send and trim large context payloads. Some SDKS can truncate parts of the event; for more details, see the [developer documentation on SDK data handling](https://develop.sentry.dev/sdk/data-handling/).
+
+<PlatformSection supported={["javascript", "node"]}>
+
+## Passing Context Directly
+
+Starting in version 5.16.0 of our JavaScript SDKs, some of the contextual data can be provided directly to `captureException` and `captureMessage` calls. Provided data will be merged with the one that is already stored inside the current scope, unless explicitly cleared using a callback method.
+
+This functionality works in three different variations:
+
+1.  Plain object containing updatable attributes
+2.  Scope instance from which we will extract the attributes
+3.  Callback function that will receive the current scope as an argument and allow for modifications
+
+We allow the following context keys to be passed: `tags`, `extra`, `contexts`, `user`, `level`, `fingerprint`.
+
+### Example Usages
+
+```javascript
+Sentry.captureException(new Error("something went wrong"), {
+  tags: {
+    section: "articles",
+  },
+});
+```
+
+Explicitly clear what has been already stored on the scope:
+
+```javascript
+Sentry.captureException(new Error("clean as never"), scope => {
+  scope.clear();
+  scope.setTag("clean", "slate");
+  return scope;
+});
+```
+
+Use Scope instance to pass the data (its attributes will still merge with the global scope):
+
+```javascript
+const scope = new Sentry.Scope();
+scope.setTag("section", "articles");
+Sentry.captureException(new Error("something went wrong"), scope);
+```
+
+Use Scope instance to pass the data and ignore globally configured Scope attributes:
+
+```javascript
+const scope = new Sentry.Scope();
+scope.setTag("section", "articles");
+Sentry.captureException(new Error("something went wrong"), () => scope);
+```
+
+## Clearing Context
+
+Context is held in the current scope and thus is cleared out at the end of each operation — request and so forth. You can also push and pop your own scopes to apply context data to a specific code block or function.
+
+Sentry supports two different scopes for unsetting context:
+
+1. A global scope, which Sentry does not discard at the end of an operation
+2. A scope created by the user
+
+This will be changed for all future events:
+
+```javascript
+Sentry.setUser(someUser);
+```
+
+This will be changed only for the error caught inside the `withScope` callback and automatically restored to the previous value afterward:
+
+```javascript
+Sentry.withScope(function(scope) {
+  scope.setUser(someUser);
+  Sentry.captureException(error);
+});
+```
+
+If you want to remove globally configured data from the scope, you can call:
+
+```javascript
+Sentry.configureScope(scope => scope.clear());
+```
+
+To learn more about setting the Scope, see our documentation on [Scopes and Hubs](../scopes/).
+
+</PlatformSection>
+
+## Additional Data
+
+In addition to structured contexts, Sentry supports adding unstructured "Additional Data" via <PlatformIdentifier name="set-extra" />. **Additional Data is deprecated** in favor of structured contexts and should be avoided when possible.
