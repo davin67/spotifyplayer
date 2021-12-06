@@ -1,0 +1,9 @@
+.cache
+.git
+.github
+.gitignore
+node_modules
+.bundle
+.DS_Store
+.nvmrc
+public
