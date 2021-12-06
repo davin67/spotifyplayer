@@ -1,0 +1,94 @@
+---
+title: JavaScript
+caseStyle: camelCase
+supportLevel: production
+sdk: "sentry.javascript.browser"
+categories:
+  - browser
+---
+
+On this page, we get you up and running with Sentry's JavaScript SDK, so that it will automatically report errors and exceptions in your application.
+
+<Note>
+<markdown>
+
+If you don't already have an account and Sentry project established, head over to [sentry.io](https://sentry.io/signup/), then return to this page.
+
+</markdown>
+</Note>
+
+Using a framework? Take a look at our specific guides to get started.
+
+<GuideGrid platform="javascript" />
+
+## Install
+
+Sentry captures data by using an SDK within your application’s runtime:
+
+<PlatformContent includePath="install-package" />
+
+<Alert level="note" title="Note"><markdown>
+
+If you are using our CDN, please see our documentation for [installing with CDN](/platforms/javascript/configuration/install-cdn).
+
+</markdown></Alert>
+
+## Initialize
+
+`init` Sentry as soon as possible in your app. Once this is done, all unhandled exceptions are automatically captured by Sentry.
+
+This snippet includes:
+- the [release](/product/releases/) of your application, using `process.env.npm_package_version`, which both enables [source maps](/platforms/javascript/sourcemaps/) as well as tracking of regressions and suspect commits.
+- our [performance monitoring](/product/performance/) package.
+
+<PlatformContent includePath="initialize-configure" />
+
+<Alert level="note" title="Note"><markdown>
+
+We'll automatically assign you a Data Source Name (DSN), which looks like a standard URL. It's required by Sentry and configures the protocol, public key, server address, and project identifier. If you forget it, view _Settings -> Projects -> Client Keys (DSN)_ in sentry.io.
+
+</markdown></Alert>
+
+## Test
+
+The snippet below includes an intentional error, so you can test that everything is working as soon as you set it up.
+
+<PlatformContent includePath="test-verify" />
+
+To view and resolve the recorded error, log into [sentry.io](https://sentry.io) and open your project. Clicking on the error's title will open a page where you can see detailed information and mark it as resolved. Explore [Performance](/product/performance/) by selecting it from the sidebar, then viewing the homepage.
+
+## Next Steps
+
+- **[Upload Source Maps](/platforms/javascript/sourcemaps/)**
+
+  We **highly recommend** you incorporate source maps to receive the full benefit of error tracking and monitoring.
+
+- **[Configure `tracesSampleRate`](/platforms/javascript/configuration/filtering/)**
+
+  The example configuration will transmit 100% of captured transactions; lower this value in production to avoid consuming your quota too quickly.
+
+- **[Learn More About Releases](/product/releases/)**
+
+  Releases help you track regressions introduced in a new release, predict which commit caused an issue, and more. Releases are also used for applying source maps to minified JavaScript to view original, untransformed source code.
+
+- **[Learn More About Performance Monitoring](/product/performance/)**
+
+  Performance monitoring gives your team full-stack visibility to trace slow-loading pages back to its API call as well as surface all related errorsand resolve bottlenecks.
+
+- **[Manage Configuration Options](./configuration/)**
+
+  Sentry's JavaScript SDK includes many configuration options that are automatically set. You can configure your SDK using the options outlined in these pages.
+
+- **[Enrich Event Data](./enriching-error-data/additional-data/)**
+
+  When your SDK sends an event to Sentry, the event is enriched with data. Learn more about the data that helps identify the source of the event and includes information both pertinent to the event as well as a full picture of what led up to it.
+
+- **[Review and Manage Integrations](./integrations/)**
+
+  Integrations extend the functionality of our JavaScript SDK to cover common libraries and environments automatically. Learn more about our default and pluggable integrations.
+
+- **[Review Troubleshooting](./troubleshooting/)**
+
+  If you need help solving issues with Sentry's JavaScript SDK, you can read the edge cases documented here.
+
+For a deep dive into our JavaScript SDK, [check out our GitHub repo](https://getsentry.github.io/sentry-javascript/).
