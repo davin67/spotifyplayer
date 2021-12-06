@@ -1,0 +1,71 @@
+---
+title: Clojure
+---
+
+On this page, we get you up and running with Sentry's Clojure SDK.
+
+<Note>
+
+If you don't already have an account and Sentry project established, head over to [sentry.io](https://sentry.io/signup/), then return to this page.
+
+</Note>
+
+Install by using `deps.edn` to bring in the dependency:
+
+<PlatformContent includePath="getting-started-install" />
+
+To add Sentry to your Clojure project, just add a new dependency to your `deps.edn`, `project.clj` or `boot.clj` file, depending upon which package/project manager you are using.
+
+To use the library, simply require the sentry namespace, and initialize the client by passing in a DSN as the first argument:
+
+<PlatformContent includePath="getting-started-config" />
+
+Capture a test message:
+
+<PlatformContent includePath="getting-started-verify" />
+
+### Source code
+
+A full list can be found in the source code of `core.clj`.
+
+<PageGrid header="Next Steps" nextSteps />
+
+## Additional Configuration
+
+When initialising the Sentry client, additional configuration can be supplied in an options map to the `(sentry/init!)` function call, i.e.,
+
+```clojure
+| key                                  | description                                                                                                        | default
+| ------------------------------------ | ------------------------------------------------------------------------------------------------------------------ | -------
+| `:environment`                       | Set the environment on which Sentry events will be logged, e.g., \"production\"                                    | production
+| `:debug`                             | Enable SDK logging at the debug level                                                                              | false
+| `:release`                           | All events are assigned to a particular release                                                                    |
+| `:shutdown-timeout`                  | Wait up to X milliseconds before shutdown if there are events to send                                              | 2000ms
+| `:in-app-excludes`                   | A seqable collection (vector for example) containing package names to ignore when sending events                   |
+| `:enable-uncaught-exception-handler` | Enables the uncaught exception handler                                                                             | true
+| `:before-send-fn`                    | A function (taking an event and a hint)                                                                            |
+|                                      | The body of the function must not be lazy (i.e., don't use filter on its own!) and must return an event or nil     |
+|                                      | If a nil is returned, the event will not be sent to Sentry                                                         |
+|                                      | [More Information](https://docs.sentry.io/platforms/java/data-management/sensitive-data/)                          |
+| `:before-breadcrumb-fn`              | A function (taking a breadcrumb and a hint)                                                                        |
+|                                      | The body of the function must not be lazy (i.e., don't use filter on its own!) and must return a breadcrumb or nil |
+|                                      | If a nil is returned, the breadcrumb will not be sent to Sentry                                                    |
+|                                      | [More Information](https://docs.sentry.io/platforms/java/enriching-events/breadcrumbs/)                            |
+```
+## Some futher initialisation examples:
+
+```clojure
+(init! \"___PUBLIC_DSN___\")
+```
+
+```clojure
+(init! \"___PUBLIC_DSN___\" {:environment \"production\" :debug true :release \"foo.bar@1.0.0\" :in-app-excludes [\"foo.bar\"])
+```
+
+```clojure
+(init! \"___PUBLIC_DSN___\" {:before-send-fn (fn [event _] (when-not (= (.. event getMessage getMessage \"foo\")) event))})
+```
+
+```clojure
+(init! \"___PUBLIC_DSN___\" {:before-send-fn (fn [event _] (.setServerName event \"fred\") event)})
+```
