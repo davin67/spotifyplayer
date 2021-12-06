@@ -1,0 +1,17 @@
+<!-- TODO: this isn't supported by PHP yet -->
+
+<!-- TODO: this is populated with unconfirmed educated guesses at syntax
+
+```php
+'traces_sampler' => static function (Sentry\Tracing\SamplingContext $samplingContext): float {
+  # always inherit
+  if (null !== $samplingContext->getParentSampled()) {
+    return $samplingContext->getParentSampled();
+  }
+
+  ...
+  # rest of sampling logic here
+}
+```
+
+-->

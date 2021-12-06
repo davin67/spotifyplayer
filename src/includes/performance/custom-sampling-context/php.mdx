@@ -1,0 +1,28 @@
+<!-- TODO: this isn't supported by PHP yet -->
+
+<!-- TODO: this is populated with unconfirmed educated guesses at syntax
+
+
+```php
+# `transactionContext` - will be recorded on transaction
+$transactionContext = new TransactionContext();
+$transactionContext->setName('GET /search');
+$transactionContext->setOp('search');
+$transactionContext->setData([
+    'query_params' => [
+        'animal' => 'dog',
+        'type' => 'very good'
+    ]
+]);
+
+# `customSamplingContext` - won't be recorded
+$customSamplingContext = new CustomSamplingContext();
+# PII
+$customSamplingContext["user_id"] = "12312012"
+# too big to send
+$customSamplingContext["search_results"] = [ ... ]
+
+
+$transaction = \Sentry\startTransaction($transactionContext, customSamplingContext);
+
+``` -->

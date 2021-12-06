@@ -1,0 +1,7 @@
+```php
+$transactionContext = new TransactionContext();
+$transactionContext->setName('GET /search');
+$transactionContext->setSampled(true);
+
+$transaction = \Sentry\startTransaction($transactionContext);
+```
