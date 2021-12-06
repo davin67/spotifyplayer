@@ -1,0 +1,22 @@
+```csharp
+// Add this to the SDK initialization callback
+options.BeforeSend = @event =>
+{
+    @event.SetFingerprint(
+        new []
+        {
+            "my-view-function",
+        }
+    );
+
+    return @event;
+};
+```
+
+```fsharp
+// Add this to the SDK initialization callback
+options.BeforeSend <- (fun event ->
+    event.SetFingerprint(["my-view-function"])
+    event
+    )
+```
