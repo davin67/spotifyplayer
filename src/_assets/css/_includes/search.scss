@@ -1,0 +1,29 @@
+#hits {
+  position: relative;
+
+  .list-group {
+    position: absolute;
+    z-index: 5;
+  }
+}
+
+.ais-Highlight {
+  color: $highlightPurple;
+}
+
+.search-results {
+  font-size: 14px;
+
+  @include media-breakpoint-up(md) {
+    width: 200%;
+  }
+}
+
+#search-clickplate {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 2;
+}
